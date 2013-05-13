@@ -1,0 +1,19 @@
+# This file was automatically generated and dropped off by Chef!
+
+# PostgreSQL Client Authentication Configuration File
+# ===================================================
+#
+# Refer to the "Client Authentication" section in the PostgreSQL
+# documentation for a complete description of this file.
+
+###########
+# Other authentication configurations taken from chef node defaults:
+###########
+#
+# Put your actual configuration here
+# ----------------------------------
+
+# MAPNAME     SYSTEM-USERNAME    PG-USERNAME
+<% node['postgresql']['pg_ident']['idents'].each do |user_map| -%>
+<%= user_map[:map_name].ljust(13) %> <%= user_map[:sys_user].ljust(18) %> <%= user_map[:pg_user] %>
+<% end %>
